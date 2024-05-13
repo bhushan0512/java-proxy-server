@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .calculator {
+            max-width: 300px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+            justify-items: center;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        input[type="text"] {
+            grid-column: span 4;
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 24px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        input[type="button"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            background-color: #e9ecef;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+        input[type="button"]:hover {
+            background-color: #ced4da;
+        }
+        input[type="button"]:active {
+            transform: translateY(3px);
+        }
+        .operator {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .operator:hover {
+            background-color: #0056b3;
+        }
+        .equals {
+            background-color: #28a745;
+            color: #fff;
+        }
+        .equals:hover {
+            background-color: #218838;
+        }
+        .clear {
+            background-color: #dc3545;
+            color: #fff;
+        }
+        .clear:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <input type="button" class="clear" value="C" onclick="clearDisplay()">
+        <input type="button" value="/" onclick="addToDisplay('/')">
+        <input type="button" value="*" onclick="addToDisplay('*')">
+        <input type="button" class="operator" value="-" onclick="addToDisplay('-')">
+        <input type="button" value="7" onclick="addToDisplay('7')">
+        <input type="button" value="8" onclick="addToDisplay('8')">
+        <input type="button" value="9" onclick="addToDisplay('9')">
+        <input type="button" class="operator" value="+" onclick="addToDisplay('+')">
+        <input type="button" value="4" onclick="addToDisplay('4')">
+        <input type="button" value="5" onclick="addToDisplay('5')">
+        <input type="button" value="6" onclick="addToDisplay('6')">
+        <input type="button" class="equals" value="=" onclick="calculate()">
+        <input type="button" value="1" onclick="addToDisplay('1')">
+        <input type="button" value="2" onclick="addToDisplay('2')">
+        <input type="button" value="3" onclick="addToDisplay('3')">
+        <input type="button" value="0" onclick="addToDisplay('0')">
+    </div>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                let result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
