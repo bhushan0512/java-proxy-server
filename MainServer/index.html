@@ -3,81 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>My Calculator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            background-color: #000;
+            color: #fff;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
         .calculator {
-            max-width: 300px;
-            margin: 50px auto;
-            background-color: #ffffff;
-            padding: 20px;
+            background-color: #000;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 10px;
-            justify-items: center;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+            padding: 20px;
+            width: 300px;
         }
-        input[type="text"] {
-            grid-column: span 4;
-            width: calc(100% - 20px);
-            margin-bottom: 10px;
-            padding: 10px;
-            font-size: 24px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-            transition: all 0.3s ease;
-        }
-        input[type="button"] {
-            width: 100%;
-            padding: 15px;
-            font-size: 20px;
-            background-color: #e9ecef;
+        .calculator input[type="text"] {
+            background-color: #000;
+            color: #fff;
             border: none;
+            width: 100%;
+            height: 50px;
+            font-size: 32px;
+            text-align: right;
+            padding-right: 10px;
+            margin-bottom: 20px;
+        }
+        .calculator input[type="button"] {
+            background-color: #222;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            width: 50px;
+            height: 50px;
+            margin: 5px;
             border-radius: 5px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            transform: translateY(0);
+            transition: background-color 0.3s ease;
         }
-        input[type="button"]:hover {
-            background-color: #ced4da;
+        .calculator input[type="button"].equals {
+            background-color: #f80;
         }
-        input[type="button"]:active {
-            transform: translateY(3px);
+        .calculator input[type="button"].operator {
+            background-color: #333;
         }
-        .operator {
-            background-color: #007bff;
-            color: #fff;
+        .calculator input[type="button"].clear {
+            background-color: #d9534f;
         }
-        .operator:hover {
-            background-color: #0056b3;
+        .calculator input[type="button"]:hover {
+            background-color: #444;
         }
-        .equals {
-            background-color: #28a745;
-            color: #fff;
-        }
-        .equals:hover {
-            background-color: #218838;
-        }
-        .clear {
-            background-color: #dc3545;
-            color: #fff;
-        }
-        .clear:hover {
-            background-color: #c82333;
+        .calculator input[type="button"]:active {
+            background-color: #555;
         }
     </style>
 </head>
 <body>
     <div class="calculator">
+        <h1 style="text-align: center;">My Calculator</h1>
         <input type="text" id="display" readonly>
         <input type="button" class="clear" value="C" onclick="clearDisplay()">
         <input type="button" value="/" onclick="addToDisplay('/')">
